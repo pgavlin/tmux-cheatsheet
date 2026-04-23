@@ -1,0 +1,12 @@
+title: tmux cheat sheet
+description: Common tmux commands, each linked to the tmux(1) man page.
+theme: minima
+
+include:
+  - _headers
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - vendor
