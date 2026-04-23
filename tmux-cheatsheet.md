@@ -60,14 +60,33 @@ Authoritative references:
 
 ## Copy Mode & Scrollback
 
+Copy mode is tmux's scrollback viewer: enter it to scroll past the visible screen, search, and copy text to paste buffers.
+
 | Command | Action | Docs |
 |---|---|---|
-| `PREFIX [` | Enter copy mode (scroll, search, select) | [copy-mode](https://man.openbsd.org/tmux.1#copy-mode) |
+| `PREFIX [` | Enter copy mode (scroll back, search, select) | [copy-mode](https://man.openbsd.org/tmux.1#copy-mode) |
 | `PREFIX ]` | Paste the most recent buffer | [paste-buffer](https://man.openbsd.org/tmux.1#paste-buffer) |
 | `PREFIX =` | Choose a buffer to paste | [choose-buffer](https://man.openbsd.org/tmux.1#choose-buffer) |
 | `PREFIX #` | List all paste buffers | [list-buffers](https://man.openbsd.org/tmux.1#list-buffers) |
-| In copy mode: `/` or `?` | Search forward / backward | [WINDOWS AND PANES](https://man.openbsd.org/tmux.1#WINDOWS_AND_PANES) |
-| In copy mode: `<space>` then `<enter>` | Start selection, copy selection (emacs mode) | [WINDOWS AND PANES](https://man.openbsd.org/tmux.1#WINDOWS_AND_PANES) |
+
+### Navigating inside copy mode
+
+tmux defaults to **emacs** key bindings; set `set -g mode-keys vi` in `~/.tmux.conf` to switch to **vi**.
+
+| Action | emacs (default) | vi |
+|---|---|---|
+| Move cursor | `Up` / `Down` / `Left` / `Right` | `k` / `j` / `h` / `l` |
+| Scroll one line | `C-Up` / `C-Down` | `C-y` / `C-e` |
+| Half page up / down | `M-Up` / `M-Down` | `C-u` / `C-d` |
+| Page up / down | `PageUp` / `PageDown` | `C-b` / `C-f` |
+| Top / bottom of history | `M-<` / `M->` | `g` / `G` |
+| Start / end of line | `C-a` / `C-e` | `0` / `$` |
+| Search forward / backward | `C-s` / `C-r` (incremental) | `/` / `?` |
+| Begin selection | `C-Space` | `Space` |
+| Copy selection and exit | `M-w` | `Enter` |
+| Exit copy mode | `Escape` | `q` |
+
+Bindings come from the copy-mode key table in [tmux(1) — WINDOWS AND PANES](https://man.openbsd.org/tmux.1#WINDOWS_AND_PANES).
 
 See also: [tmux wiki — Clipboard](https://github.com/tmux/tmux/wiki/Clipboard).
 
